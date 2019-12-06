@@ -84,6 +84,10 @@
       {
         "name": "Math & Logical Operation",
         "url": "math-logical-operations"
+      },
+      {
+        "name": "Transform JSON",
+        "url": "transform-json"
       }
     ]
 
@@ -136,7 +140,7 @@
   },
   {
     "title": "Aggregation",
-    "column": 2,
+    "column": 3,
     "category": "Language concepts",
     "samples": [
       {
