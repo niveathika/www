@@ -148,8 +148,16 @@
         "url": "stream-join"
       },
       {
+        "name": "Partition Events by Value",
+        "url": "partition-by-value"
+      },
+      {
         "name": "Scatter and Gather (String)",
         "url": "scatter-and-gather-string"
+      },
+      {
+        "name": "Scatter and Gather (JSON)",
+        "url": "scatter-and-gather-json"
       }
     ]
   }
