@@ -191,6 +191,22 @@
       {
         "name": "Simple Pattern",
         "url": "simple-pattern"
+      },
+      {
+        "name": "Counting Pattern",
+        "url": "counting-pattern"
+      },
+      {
+        "name": "Logical Pattern",
+        "url": "logical-pattern"
+      },
+      {
+        "name": "Non Occurrence Pattern",
+        "url": "non-occurrence-pattern"
+      },
+      {
+        "name": "Simple Sequence",
+        "url": "simple-sequence"
       }
     ]
   }

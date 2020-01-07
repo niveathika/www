@@ -1,0 +1,19 @@
+This application sends a `stop` action on the regulator if a `removed` action is triggered in the RoomKeyStream stream.
+
+#### Input
+
+- First, below event is sent to `RegulatorStateChangeStream`,
+
+    [`10`, `5`, `30`, `on`]
+
+- Then, send below events are sent to `RoomKeyStream`,
+
+    [`10`, `5`, `removed`]
+
+
+#### Output
+
+After processing the above input events, the event arriving at `RegulatorActionStream` will be as follows:
+
+[`5`, `stop`]
+
