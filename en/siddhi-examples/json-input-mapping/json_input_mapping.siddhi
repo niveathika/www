@@ -1,0 +1,69 @@
+/*
+{
+    event : {
+        "name" : "siddhi.user",
+        "age" : "25"
+        "address" : "20, Palm Groove, Colombo, Sri Lanka",
+        "contact": "+9xxxxxxx1,+9xxxxxxx2"
+    }
+}
+*/
+@Source(type = 'http', receiver.url = 'http://localhost:8006/PersonalDetails', 
+	@map(type = 'json'))
+define stream PersonalDetailsDefaultMapping (name string, age int, address string, contact string);
+
+
+/* 
+{
+    "name" : "siddhi.user",
+    "age" : "25",
+    "address" : {
+        "number": "20",
+        "lane": "Palm Groove",
+        "city": "Colombo"
+        "country": "Sri Lanka",
+    },
+    "contact": ["+9xxxxxxx1, +9xxxxxxx2"]
+}
+*/
+@Source(type = 'http', receiver.url = 'http://localhost:8006/PersonalDetailsCustom', 
+	@map(type = 'json', 
+	       @attributes(name = 'name', age ='age', addressCountry = 'address.country', contact = 'contact[0]' ) ))
+	       @sink(type='log') 
+define stream PersonalDetailsCustomMapping (name string, age int, addressCountry string, contact string);
+
+
+/* 
+{
+    person : [
+                {
+                    "name" : "siddhi.user",
+                    "age" : "25",
+                    "address" : {
+                        "number": "20",
+                        "lane": "Palm Groove",
+                        "city": "Colombo"
+                        "country": "Sri Lanka",
+                    },
+                    "contact": ["+9xxxxxxx1, +9xxxxxxx2"]
+                }, 
+                {
+                    "name" : "siddhi.user",
+                    "age" : "25",
+                    "address" : {
+                        "number": "20",
+                        "lane": "Palm Groove",
+                        "city": "Colombo"
+                        "country": "Sri Lanka",
+                    },
+                    "contact": ["+9xxxxxxx1, +9xxxxxxx2"]
+                }, 
+                ]
+                
+}
+*/
+@Source(type = 'http', receiver.url = 'http://localhost:8006/PersonalDetailsMultiple', 
+	@map(type = 'json', enclosing.element = 'person',
+	       @attributes(name = 'name', age ='age', addressCountry = 'address.country', contact = 'contact[0]' ) ))
+	       @sink(type='log') 
+define stream PersonalDetailsEnclosingElement (name string, age int, addressCountry string, contact string);
